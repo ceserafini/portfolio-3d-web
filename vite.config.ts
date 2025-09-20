@@ -13,6 +13,7 @@ export default defineConfig({
     tsconfigPaths(),
     svgr()
   ],
+  base: '/portfolio-3d-web/',
   server: { 
     port: 5173,
     host: true, // Permitir acceso desde red
