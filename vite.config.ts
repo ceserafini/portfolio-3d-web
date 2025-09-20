@@ -4,7 +4,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import svgr from 'vite-plugin-svgr'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
     react({
       // Usar el nuevo JSX transform
@@ -13,7 +13,7 @@ export default defineConfig({
     tsconfigPaths(),
     svgr()
   ],
-  base: '/portfolio-3d-web/',
+  base: command === 'build' ? '/portfolio-3d-web/' : '/',
   server: { 
     port: 5173,
     host: true, // Permitir acceso desde red
@@ -36,4 +36,4 @@ export default defineConfig({
   optimizeDeps: {
     include: ['three', '@react-three/fiber', '@react-three/drei']
   }
-})
+}))

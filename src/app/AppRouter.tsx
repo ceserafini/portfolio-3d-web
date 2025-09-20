@@ -5,9 +5,12 @@ import SpinningCube from './routes/demos/three/spinning-cube'
 import ParticlesSphere from './routes/demos/three/particles-sphere'
 import WebProjectCards from './routes/demos/web/project-cards'
 
-// GitHub Pages URL redirect handler
+// GitHub Pages URL redirect handler - solo para producción
 function GitHubPagesRedirectHandler() {
   useEffect(() => {
+    // Solo ejecutar en producción (GitHub Pages)
+    if (import.meta.env.DEV) return
+    
     const path = window.location.search
     if (path && path.startsWith('?/')) {
       const route = path.slice(2).replace(/~and~/g, '&')
